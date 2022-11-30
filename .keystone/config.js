@@ -337,6 +337,7 @@ var sessionSecret = process.env.COOKIE_SECRET;
 if (!sessionSecret && process.env.NODE_ENV !== "production") {
   sessionSecret = (0, import_crypto.randomBytes)(32).toString("hex");
 }
+console.log(sessionSecret);
 var { withAuth } = (0, import_auth.createAuth)({
   listKey: "User",
   identityField: "email",

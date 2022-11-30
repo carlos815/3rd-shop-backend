@@ -28,6 +28,7 @@ let sessionSecret = process.env.COOKIE_SECRET;
 if (!sessionSecret && process.env.NODE_ENV !== 'production') {
   sessionSecret = randomBytes(32).toString('hex');
 }
+console.log(sessionSecret)
 
 // withAuth is a function we can use to wrap our base configuration
 const { withAuth } = createAuth({
