@@ -27,7 +27,7 @@ export default withAuth(
   config({
     server: {
       cors: {
-        origin: [process.env.FRONTEND_URL],
+        origin: ["https://3rd-shop.vercel.app/"],
         credentials: true,
       },
       port: 3000,
