@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { graphql, list } from "@keystone-6/core";
 import { allowAll, allOperations } from "@keystone-6/core/access";
 import { integer, relationship, text, timestamp, virtual } from "@keystone-6/core/fields";

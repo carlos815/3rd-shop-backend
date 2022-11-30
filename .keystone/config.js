@@ -525,7 +525,7 @@ var keystone_default = withAuth(
     },
     lists,
     session,
-    startSession: (data) => {
+    startSession: () => {
       return {
         User: `id name email role { ${permissionsList.join(" ")} }`
       };

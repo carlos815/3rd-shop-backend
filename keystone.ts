@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Welcome to Keystone!
 //
 // This file is what Keystone uses as the entry-point to your headless backend
@@ -11,6 +12,7 @@ import { lists } from './schema';
 
 // authentication is configured separately here too, but you might move this elsewhere
 // when you write your list-level access control functions, as they typically rely on session data
+
 import { withAuth, session } from './auth';
 
 
@@ -39,12 +41,12 @@ export default withAuth(
       provider: 'sqlite',
       url: 'file:./keystone.db',
 
-      
+
 
     },
     lists,
     session,
-    startSession: (data) => {
+    startSession: () => {
       return {
         // GraphQL Query
         User: `id name email role { ${permissionsList.join(' ')} }`,

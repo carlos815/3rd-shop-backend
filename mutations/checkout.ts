@@ -2,8 +2,10 @@ import { graphql, config } from '@keystone-6/core';
 import { Context } from '.keystone/types';
 import { relationship } from '@keystone-6/core/fields';
 import stripeConfig from '../lib/stripe';
+import { BaseSchemaMeta } from '@keystone-6/core/dist/declarations/src/types/schema/graphql-ts-schema';
+import { CartItem } from '../types';
 
-const checkout = (base) => graphql.field({
+const checkout = (base: BaseSchemaMeta) => graphql.field({
     type: base.object('CartItem'),
     args: { token: graphql.arg({ type: graphql.nonNull(graphql.String) }) },
     // 1. Make sure they are signed in
@@ -43,7 +45,7 @@ const checkout = (base) => graphql.field({
         });
 
         // 2. calc the total price for their order
-        const totalOrder = user.cart.reduce((accumulator, cartItem) => {
+        const totalOrder = user.cart.reduce((accumulator: number, cartItem: CartItem) => {
             const amountCartItem = cartItem.quantity * cartItem.product.price
             return accumulator + amountCartItem
         }, 0)
@@ -61,7 +63,7 @@ const checkout = (base) => graphql.field({
         });
 
         //Create an order based on the cart item
-        const orderItems = user.cart.map((cartItem) => {
+        const orderItems = user.cart.map((cartItem: CartItem) => {
             return {
                 name: cartItem.product.name,
                 description: cartItem.product.description,
@@ -83,7 +85,7 @@ const checkout = (base) => graphql.field({
         });
         // //Clean up! Delete all cart items
         await context.db.CartItem.deleteMany({
-            where: user.cart.map(cartItem => { return { id: cartItem.id } })
+            where: user.cart.map((cartItem: CartItem) => { return { id: cartItem.id } })
         })
         return order
     }

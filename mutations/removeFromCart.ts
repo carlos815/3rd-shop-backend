@@ -1,8 +1,9 @@
 import { graphql, config } from '@keystone-6/core';
 import { Context } from '.keystone/types';
 import { relationship } from '@keystone-6/core/fields';
+import { BaseSchemaMeta } from '@keystone-6/core/dist/declarations/src/types/schema/graphql-ts-schema';
 
-const removeFromCart = (base) => graphql.field({
+const removeFromCart = (base: BaseSchemaMeta) => graphql.field({
     type: base.object('CartItem'),
     args: { id: graphql.arg({ type: graphql.nonNull(graphql.ID) }) },
     async resolve(source, { id }, context: Context) {
