@@ -29,7 +29,9 @@ export default withAuth(
       cors: {
         origin: [process.env.FRONTEND_URL, "https://3rd-shop.vercel.app", /\.3rd-shop.vercel\.app$/, /[\w\-\/\:]*carlos815.vercel.app/],
         credentials: true,
-        methods: ['GET', 'PUT', 'POST']
+        methods: ['GET', 'PUT', 'POST'],
+
+
       },
 
       port: 3000,
