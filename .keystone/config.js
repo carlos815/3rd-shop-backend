@@ -512,7 +512,7 @@ var keystone_default = withAuth(
   (0, import_core11.config)({
     server: {
       cors: {
-        origin: [process.env.FRONTEND_URL, "https://3rd-shop.vercel.app", /\.3rd-shop.vercel\.app$/],
+        origin: [process.env.FRONTEND_URL, "https://3rd-shop.vercel.app", /\.3rd-shop.vercel\.app$/, /[\w\-\/\:]*carlos815.vercel.app/],
         credentials: true,
         methods: ["GET", "PUT", "POST"]
       },
